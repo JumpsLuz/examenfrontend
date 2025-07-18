@@ -102,15 +102,15 @@ export default {
     verificarEstado() {
       if (this.resultado < 40 && this.asistencia < 80) {
         this.estado = 'Reprobado'
-        this.razon = 'que el promedio es menor a 40 y la asistencia es menor a 80%'
+        this.razon = 'Reprobaste porque el promedio es menor a 40 y la asistencia es menor a 80%'
       }
       else if (this.asistencia < 80) {
         this.estado = 'Reprobado'
-        this.razon = 'que la asistencia es menor a 80%'
+        this.razon = 'Reprobaste porque la asistencia es menor a 80%'
       }
       else if (this.resultado < 40) {
         this.estado = 'Reprobado'
-        this.razon = 'que el promedio es menor a 40'
+        this.razon = 'Reprobaste porque el promedio es menor a 40'
       }
       else {
         this.estado = 'Aprobado'
@@ -127,7 +127,7 @@ export default {
         this.validOrNAH = true
         this.calcularCalificacion()
         this.verificarEstado()
-        this.mensaje = 'El promedio es: ' + this.resultado + '\n Tu estado es: ' + this.estado +'. \nReprobaste por' + this.razon
+        this.mensaje = 'El promedio es: ' + this.resultado + '\n Tu estado es: ' + this.estado + this.razon
       }
       else {
         this.validOrNAH = false
