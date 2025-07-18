@@ -35,8 +35,10 @@
     <button @click="verificarCalificacion" class="btn-calcular">Calcular</button>
 
     <div v-if="mensaje" class="mensaje">
-      <div :class="{ 'valid': validOrNAH }">
-        {{ mensaje }}
+      <div :class="{ 'valid': validOrNAH }" class="mensaje-contenido">
+        <div>El promedio es: {{ resultado }}</div>
+        <div>Tu estado es: {{ estado }}</div>
+        <div v-if="razon">{{ razon }}</div>
       </div>
     </div>
   </div>
@@ -114,6 +116,7 @@ export default {
       }
       else {
         this.estado = 'Aprobado'
+        this.razon = '' // Sin razón para aprobado
       }
     },
 
@@ -127,7 +130,7 @@ export default {
         this.validOrNAH = true
         this.calcularCalificacion()
         this.verificarEstado()
-        this.mensaje = 'El promedio es: ' + this.resultado + '\n Tu estado es: ' + this.estado + this.razon
+        this.mensaje = 'Cálculo completado'
       }
       else {
         this.validOrNAH = false
@@ -233,6 +236,18 @@ label {
   border-radius: 5px;
   text-align: center;
   color: #dc3545;
+}
+
+.mensaje-contenido {
+  line-height: 1.6;
+}
+
+.mensaje-contenido div {
+  margin-bottom: 8px;
+}
+
+.mensaje-contenido div:last-child {
+  margin-bottom: 0;
 }
 
 .valid {
